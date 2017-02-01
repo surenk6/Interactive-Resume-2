@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-  /* what happens when the resume request button is clicked*/
-  $("#cv-download-text").click(function(){
-      alert("something");
-  });
-
-
   /* burger menu animation*/
   $('.toggler').click(function(){
     var burgers = $('.toggler').find('.nav-burger-item');
@@ -18,14 +12,29 @@ $(document).ready(function(){
 
   /* burger menu gets white when hovering over nav menu*/
   $('.toggler').hover(function(){
-    $('.nav-burger-item').css('background-color','white');
-  }, function(){
-    $('.nav-burger-item').css('background-color','black');
+      $('.nav-burger-item').css('background-color','white');
+    }, function(){
+      $('.nav-burger-item').css('background-color','black');
   })
 
   /* narrow screen menu open animation*/
   $(".toggler").click(function(){
     $("nav ul").toggleClass("visible")
+  })
+
+  /* stat section numbers grow animation only once*/
+  var stats = $(".stats-wrap").find('h1');
+  var statValues = [];
+  for (var i = 0; i < stats.length; i++) {
+    statValues.push(stats[i].innerText);
+    statValues[i] = parseInt(statValues[i]);
+  }
+  $('.stats-wrap').one('inview', function(event, isInView){
+      if (isInView == true) {
+        for (var i = 0; i < statValues.length; i++) {
+          $('#stat'+(i+1)).animateNumber({ number: statValues[i] }, 1000);
+      }
+      } else {}
   })
 
 
@@ -67,51 +76,39 @@ $(document).ready(function(){
   /* wide screen nav bar appears when out of header section*/
   $('.header-navigation').on('inview', function(event, isInView){
     if (isInView == true) {
-      $('.navigation').removeClass('navigation-visible');
-    } else {
-      $('.navigation').addClass('navigation-visible');
+        $('.navigation').removeClass('navigation-visible');
+      } else {
+        $('.navigation').addClass('navigation-visible');
     }
   })
 
 
-  /* highlights the navigation bar item
-  // on the section ofwhich you are on now*/
-
-  var sections = $("body").find('section')
-  var sectionIDs = [];
-  for (var i = 0; i < sections.length; i++) {
-    sectionIDs.push(sections[i].id);
-  }
-  console.log(sectionIDs)
-  var index = sectionIDs.indexOf('skills');
-        $(sections[index]).on('inview', function(event, isInView){
-          if (isInView == true) {
-            console.log('skills');
-            $('#nav-skills').css("color", "orange");
-          } else {
-            $('#nav-skills').css("color", "inherit");
-            console.log('no skills');
-        }})
-
-
-
   /* portfolio section animations*/
   $(".project").hover(function(){
-    $(this).find(".project-silde").css("top", "0%");
-    $(this).find("span").css("opacity", "1");
-  }, function(){
-    $(this).find(".project-silde").css("top", "75%");
-    $(this).find("span").css("opacity", "0");
+      $(this).find(".project-silde").css("top", "0%");
+      $(this).find("span").css("opacity", "1");
+    }, function(){
+      $(this).find(".project-silde").css("top", "75%");
+      $(this).find("span").css("opacity", "0");
   })
-
   $(".program").hover(function(){
-    $(this).find(".program-silde").css("top", "0%");
-    $(this).find("span").css("opacity", "1");
-  }, function(){
-    $(this).find(".program-silde").css("top", "75%");
-    $(this).find("span").css("opacity", "0");
+      $(this).find(".program-silde").css("top", "0%");
+      $(this).find("span").css("opacity", "1");
+    }, function(){
+      $(this).find(".program-silde").css("top", "75%");
+      $(this).find("span").css("opacity", "0");
   })
-
+  $('.program-hover').hover(function(){
+      $(this).find('.program-name').css('opacity', '0');
+      $(this).find('.program-name').css('bottom', '20%');
+      $(this).find('.program-hover-content').css('opacity', '1');
+      $(this).find('.program-hover-content').css('bottom', '0');
+    }, function(){
+      $(this).find('.program-name').css('opacity', '1');
+      $(this).find('.program-name').css('bottom', '0');
+      $(this).find('.program-hover-content').css('opacity', '0');
+      $(this).find('.program-hover-content').css('bottom', '-30%');
+  })
 
 
   /* portfolio section opens content on click and closes on x and close button*/
