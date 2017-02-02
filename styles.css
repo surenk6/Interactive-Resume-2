@@ -72,7 +72,7 @@ a{
   padding-bottom: 1.5em;
   transition: padding-top 200ms,
               padding-bottom 200ms,
-              opacity 200ms 100ms;
+              opacity 50ms 100ms;
 }
 
 .navigation ul li{
@@ -103,6 +103,11 @@ a{
               padding-top 400ms,
               padding-bottom 400ms;
 }
+
+.navigation-visible .personal-logo svg{
+    width: 2.5em;
+    height: 2.5em;
+  }
 
 .navigation-element-onView{
   color: orange;
@@ -151,6 +156,27 @@ div.header-navigation ul{
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+.personal-logo{
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  left: 2em;
+}
+
+.personal-logo svg{
+  width: 3em;
+  height: 3em;
+  float: left;
+  transition:
+    width 400ms.
+    height 400ms;
+}
+
+#landing-page-logo svg path{
+  fill: white;
 }
 
 div.header-navigation ul li{
@@ -233,6 +259,14 @@ div.header-navigation ul li a:hover{
     background-color: orange;
     box-shadow: 0 0 3px 0 #ddd;
     color: white;
+  }
+  .personal-logo{
+    display: none;
+    position: static;
+  }
+  .personal-logo svg{
+    height: 2em;
+    width: 2em;
   }
   .header-navigation{
     display: none;
@@ -616,12 +650,6 @@ section.portfolio h2{
     opacity 400ms,
     bottom 400ms;
 }
-
-/*.program-hover-content span{
-  padding: 5%;
-  background-color: rgba(100, 50, 50, 0.6);
-  border-radius: 1em;
-}*/
 
 .program-hover-content strong{
   text-transform: uppercase;

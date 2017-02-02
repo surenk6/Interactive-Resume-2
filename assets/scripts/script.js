@@ -10,11 +10,13 @@ $(document).ready(function(){
   })
 
 
-  /* burger menu gets white when hovering over nav menu*/
+  /* burger menu and personal logo get white when hovering over nav menu*/
   $('.toggler').hover(function(){
       $('.nav-burger-item').css('background-color','white');
+      $('.personal-logo svg path').css('fill','white');
     }, function(){
       $('.nav-burger-item').css('background-color','black');
+      $('.personal-logo svg path').css('fill','black');
   })
 
   /* narrow screen menu open animation*/
@@ -74,13 +76,22 @@ $(document).ready(function(){
 
 
   /* wide screen nav bar appears when out of header section*/
-  $('.header-navigation').on('inview', function(event, isInView){
+  $(window).scroll(function(){
+    var scrollPos = $(this).scrollTop()
+    if ( scrollPos > 0) {
+      $('.navigation').addClass('navigation-visible');
+    } else if ( scrollPos == 0) {
+      $('.navigation-visible').removeClass('navigation-visible');
+    }
+  })
+  /*$('.header-navigation').on('inview', function(event, isInView){
     if (isInView == true) {
         $('.navigation').removeClass('navigation-visible');
       } else {
         $('.navigation').addClass('navigation-visible');
     }
-  })
+  })*/
+
 
 
   /* portfolio section animations*/
