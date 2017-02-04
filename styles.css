@@ -107,6 +107,9 @@ a{
 .navigation-visible .personal-logo svg{
     width: 2.5em;
     height: 2.5em;
+    transition:
+      width 400ms,
+      height 400ms;
   }
 
 .navigation-element-onView{
@@ -171,7 +174,7 @@ div.header-navigation ul{
   height: 3em;
   float: left;
   transition:
-    width 400ms.
+    width 400ms,
     height 400ms;
 }
 
@@ -265,6 +268,10 @@ div.header-navigation ul li a:hover{
     position: static;
   }
   .personal-logo svg{
+    height: 2em;
+    width: 2em;
+  }
+  .navigation-visible .personal-logo svg{
     height: 2em;
     width: 2em;
   }
